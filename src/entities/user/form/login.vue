@@ -26,4 +26,6 @@ form
 		type='password'
 	)
 	q-btn.mx-0.mt-5.w-full(label='Войти', color='primary', @click='login')
+	router-link(to='/account/reg')
+		q-btn.mx-0.mt-5.w-full(label='Регистрация', color='secondary', outline)
 </template>

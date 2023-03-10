@@ -28,7 +28,45 @@ const routes: RouteRecordRaw[] = [
 			{
 				path: '/account',
 				name: 'account',
-				component: () => import('pages/account.vue'),
+				component: () => import('src/pages/account/index.vue'),
+				children: [
+					{
+						path: '/account/reg',
+						name: 'reg',
+						component: () => import('pages/account/reg.vue'),
+						meta: { auth: false },
+					},
+					{
+						path: '/account/login',
+						name: 'login',
+						component: () => import('pages/account/login.vue'),
+						meta: { auth: false },
+					},
+					{
+						path: '/account/sms-code',
+						name: 'sms-code',
+						component: () => import('pages/account/sms-code.vue'),
+						meta: { auth: false },
+					},
+					{
+						path: '/account/reset-password',
+						name: 'reset-password',
+						component: () =>
+							import('pages/account/reset-password.vue'),
+						meta: { auth: false },
+					},
+					{
+						path: '/account/profile',
+						name: 'profile',
+						component: () => import('pages/account/profile.vue'),
+						meta: { auth: true },
+					},
+				],
+			},
+			{
+				path: '/:pathMatch(.*)*',
+				name: 'NotFound',
+				component: () => import('pages/not-found.vue'),
 			},
 		],
 	},
